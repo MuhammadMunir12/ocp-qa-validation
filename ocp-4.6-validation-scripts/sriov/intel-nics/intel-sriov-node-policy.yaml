@@ -1,0 +1,16 @@
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: intel-sriov-node-policy
+  namespace: openshift-sriov-network-operator
+spec:
+  resourceName: intelnics
+  nodeSelector:
+    kubernetes.io/hostname: r191c1.dsp.lab
+  numVfs: 10
+  nicSelector:
+    vendor: "8086"
+    deviceID: "158b"
+    pfNames: ["ens3f0","ens3f1"]
+    rootDevices: ["0000:d8:00.0","0000:d8:00.1"]
+  deviceType: vfio-pci

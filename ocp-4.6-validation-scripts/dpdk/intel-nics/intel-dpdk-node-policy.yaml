@@ -1,0 +1,15 @@
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: intel-dpdk-node-policy-for-testpmd
+  namespace: openshift-sriov-network-operator
+spec:
+  resourceName: intelnics
+  nodeSelector:
+    node-role.kubernetes.io/worker-cnf: ""
+  numVfs: 5
+  mtu: 1500
+  nicSelector:
+    pfNames: ["ens3f1"]
+    rootDevices: ["0000:d8:00.1"]
+  deviceType: vfio-pci

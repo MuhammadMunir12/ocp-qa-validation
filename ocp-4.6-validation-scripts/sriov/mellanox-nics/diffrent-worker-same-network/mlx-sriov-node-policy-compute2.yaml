@@ -1,0 +1,18 @@
+apiVersion: sriovnetwork.openshift.io/v1
+kind: SriovNetworkNodePolicy
+metadata:
+  name: cmp2-node-policy-r189
+  namespace: openshift-sriov-network-operator
+spec:
+  resourceName: mellanox_r640_cx5_25g
+  nodeSelector:
+    kubernetes.io/hostname: cmp2.dsp.lab
+  priority: 10
+  mtu: 1500
+  numVfs: 10
+  nicSelector:
+    pfNames: ["ens3f0","ens3f1"]
+    rootDevices: ["0000:d8:00.0", "0000:d8:00.1"]
+  deviceType: netdevice
+  isRdma: false
+
